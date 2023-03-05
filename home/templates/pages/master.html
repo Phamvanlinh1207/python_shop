@@ -54,8 +54,17 @@
                                                     <li><a href="contact.html" title="Contact">Contact</a></li>
                                                     <li><a href="wishlist.html" title="wishlist">My wishlist</a></li>
                                                     <li><a href="my-account.html" title="My account">My account</a></li>
-                                                    <li><a href="cart.html" title="My cart">My cart</a></li>
-                                                    <li><a href="login.html" title="Login">Login</a></li>
+                                                    <li><a href="{% url 'home:cart'%}" title="My cart">My cart</a></li>
+
+                                                    
+                                                        {%if user.username %}
+                                                        <li><a> Xin chào - <b>{{user.username}}</b></a></li>
+                                                        <li><a href="{% url 'home:logout'%}" title="Logout">Logout</a></li>
+                                                        {% else %}
+                                                        <li> <a href="{% url 'home:login'%}" title="Login">Login</a></li>
+                                                        {% endif %}
+
+                                                    
                                                 </ul>
                                             </div>   
                                         </div>
@@ -139,7 +148,7 @@
                                                 <div class="main_menu d-none d-lg-block">
                                                     <nav>
                                                         <ul>
-                                                            <li class="active"><a href="#">Home</a>
+                                                            <li class="active"><a href="{% url 'home:home'%}">Home</a>
                                                             </li>
                                                             <li><a href="{% url 'home:product'%}">shop</a>
                                                                 <div class="mega_menu jewelry">

@@ -2,6 +2,7 @@
 
 {% block title%}Product{%endblock%}
 {% load static%}
+
 {% block content%}
 <div class="breadcrumbs_area">
     <div class="row">
@@ -28,24 +29,13 @@
                             <h4>Categories</h4>
                         </div>
                         <div class="layere_categorie">
+                            {% for  category in categoryList %}
                             <ul>
                                 <li>
-                                    <input id="acces" type="checkbox">
-                                    <label for="acces">Accessories<span>(1)</span></label>
-                                </li>
-                                <li>
-                                    <input id="dress" type="checkbox">
-                                    <label for="dress">Dresses <span>(2)</span></label>
-                                </li>
-                                <li>
-                                    <input id="tops" type="checkbox">
-                                    <label for="tops">Tops<span>(3)</span></label>
-                                </li>
-                                <li>
-                                    <input id="bag" type="checkbox">
-                                    <label for="bag">HandBags<span>(4)</span></label>
+                                    <a href="#"> {{ category.title }}</a>
                                 </li>
                             </ul>
+                            {% endfor %}
                         </div>
                     </div>
                 <!--layere categorie end-->
