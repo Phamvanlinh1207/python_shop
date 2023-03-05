@@ -1,0 +1,60 @@
+{% extends "pages/master.html" %}
+
+{% block title%}Login{%endblock%}
+{% load static%}
+{% block content%}
+<div class="breadcrumbs_area">
+    <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="index.html">home</a></li>
+                        <li><i class="fa fa-angle-right"></i></li>
+                        <li>login</li>
+                    </ul>
+
+                </div>
+            </div>
+    </div>
+</div>
+<!--breadcrumbs area end-->
+
+<!-- customer login start -->
+<div class="customer_login">
+               <!--login area start--> 
+                <div class="center-me ">
+                    <div class="account_form" text-align="center"  style="width:600px; margin-left:280px;">
+                        <h2>login</h2>
+                        <form action="." method="POST">
+                            {% csrf_token %}
+                            {% for key.value in form.errors.items%}
+                                {{value}}
+                            {% endfor %}
+                            <p>   
+                                <label>Username or email <span>*</span></label>
+                                {{form.username}} 
+                             </p>
+                             <p>   
+                                <label>Passwords <span>*</span></label>
+                                {{form.password}}
+                             </p> 
+                             <input type="hidden" name='next' value="/">  
+                            <div class="login_submit">
+                                <button type="submit">login</button>
+                                <label for="remember">
+                                    <input id="remember" type="checkbox">
+                                    Remember me
+                                </label>
+                                <a href="{% url 'home:register'%}">Register?</a>
+                            </div>
+
+                        </form>
+                     </div>    
+                </div>
+                <!--login area start-->
+
+                <!--register area start-->
+            
+                <!--register area end-->
+</div>
+{%endblock%}
