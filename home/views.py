@@ -9,12 +9,16 @@ def home(request):
     return render (request, 'pages/index.html')
 
 def product(request):
-    productList = Product.objects.all()
+    if 'name' in request.GET:
+        name = request.GET['name']
+        productList = Product.objects.filter(name=name)
+    else:
+        productList = Product.objects.all()
     categoryList = Category.objects.all()
     return render (request, 'pages/product.html', {'productList':productList, 'categoryList':categoryList})
 
-def productDetail(request, id):
-    product = Product.objects.get(id = id)
+def productDetail(request, slug,id):
+    product = Product.objects.get(slug = slug, id = id)
     return render (request, 'pages/productDetail.html', {'product':product})
 
 def cart(request):

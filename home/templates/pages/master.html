@@ -58,13 +58,11 @@
 
                                                     
                                                         {%if user.username %}
-                                                        <li><a> Xin chào - <b>{{user.username}}</b></a></li>
+                                                        <li> <a href="http://127.0.0.1:8000/admin">Xin chào - <b>{{user.username}}</b></a></li>
                                                         <li><a href="{% url 'home:logout'%}" title="Logout">Logout</a></li>
                                                         {% else %}
                                                         <li> <a href="{% url 'home:login'%}" title="Login">Login</a></li>
                                                         {% endif %}
-
-                                                    
                                                 </ul>
                                             </div>   
                                         </div>
@@ -85,9 +83,9 @@
                                         <div class="col-lg-9 col-md-9">
                                             <div class="header_right_info">
                                                 <div class="search_bar">
-                                                    <form action="#">
-                                                        <input placeholder="Search..." type="text">
-                                                        <button type="submit"><i class="fa fa-search"></i></button>
+                                                    <form>
+                                                        <input name="name" placeholder="Search..." type="text">
+                                                        <button><i class="fa fa-search"></i></button>
                                                     </form>
                                                 </div>
                                                 <div class="shopping_cart">
