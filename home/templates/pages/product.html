@@ -263,7 +263,7 @@
                                         <div class="product_info">
                                             <ul>
                                                 <li><a href="#" title=" Add to Wishlist ">Add to Wishlist</a></li>
-                                                <li><a href="{% url 'home:productDetail' product.id %}" >View Detail</a></li>
+                                                <li><a href="{% url 'home:productDetail' product.slug product.id %}" >View Detail</a></li>
                                             </ul>
                                         </div>
                                     </div>

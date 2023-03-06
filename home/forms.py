@@ -18,7 +18,7 @@ class RegisterForm(forms.Form):
         raise forms.ValidationError("Nhập mật khẩu không hợp lệ")
     def clean_username(self):
         username = self.cleaned_data['username']
-        if not re.search(r'^\W+$', username):
+        if re.search(r'^\W+$', username):
             raise forms.ValidationError("Tên tài khoản có kí tự đặc biệt")
         try:
             User.objects.get(username=username)
