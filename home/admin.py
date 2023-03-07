@@ -11,7 +11,6 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
-
     list_display = ("name", "admin_photo", "price", "quantity", "description", "views", "category")
 
     readonly_fields = ['admin_photo']

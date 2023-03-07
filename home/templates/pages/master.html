@@ -147,23 +147,17 @@
                                                     <nav>
                                                         <ul>
                                                             <li class="active"><a href="{% url 'home:home'%}">Home</a>
+                                                                
                                                             </li>
                                                             <li><a href="{% url 'home:product'%}">shop</a>
                                                                 <div class="mega_menu jewelry">
                                                                     <div class="mega_items jewelry">
-                                                                        <ul>
-                                                                            <li><a href="shop-list.html">shop list</a></li>
-                                                                            <li><a href="shop-fullwidth.html">shop Full Width Grid</a></li>
-                                                                            <li><a href="shop-fullwidth-list.html">shop Full Width list</a></li>
-                                                                            <li><a href="shop-sidebar.html">shop Right Sidebar</a></li>
-                                                                            <li><a href="shop-sidebar-list.html">shop list Right Sidebar</a></li>
-                                                                            <li><a href="single-product.html">Product Details</a></li>
-                                                                            <li><a href="single-product-sidebar.html">Product sidebar</a></li>
-                                                                            <li><a href="single-product-video.html">Product Details video</a></li>
-                                                                            <li><a href="single-product-gallery.html">Product Details Gallery</a></li>
+                                                                        <ul>{% for  category in categoryList %}
+                                                                            <li><a href="{% url 'home:category' category.id %}">{{ category.title }}</a></li>
+                                                                            {% endfor %}
                                                                         </ul>
                                                                     </div>
-                                                                </div>  
+                                                                </div> 
                                                             </li>
                                                             <li><a href="#">women</a>
                                                                 <div class="mega_menu">

@@ -7,6 +7,7 @@ app_name = 'home'
 urlpatterns = [
     path('', views.home, name='home' ),
     path('product/', views.product, name = 'product' ),
+    path('category/<slug:slug>', views.categoryView, name = 'category' ),
     path('product-Detail/<slug:slug>/<int:id>', views.productDetail, name = 'productDetail' ),
     path('cart/', views.cart, name='cart' ),
     path( 'login/',auth_views.LoginView.as_view(template_name="pages/login.html"), name="login"),
