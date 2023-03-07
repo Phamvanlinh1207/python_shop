@@ -25,3 +25,9 @@ class Product(models.Model):
     admin_photo.allow_tags = True
     def __str__(self):
         return self.name
+    @staticmethod
+    def get_all_product_py_id(Category):
+        if Category:
+            return Product.objects.filter(Category = Category)
+        else:
+            return Product.objects.all()
