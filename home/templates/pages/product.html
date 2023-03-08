@@ -67,7 +67,6 @@
                 <div class="sidebar_widget price">
                     <h2>Price</h2>
                     <div class="ca_search_filters">
-
                         <input type="text" name="text" id="amount">  
                         <div id="slider-range"></div> 
                     </div>
@@ -217,17 +216,18 @@
                         </ul>
                     </div>
                     <div class="page_amount">
-                        <p>Showing 1–9 of 21 results</p>
+                        <p>Showing 1–9 of {{count}} results</p>
                     </div>
                     
                     <div class="select_option">
                         <form action="#">
                             <label>Sort By</label>
+                            <a href="/product/{% for i in productList %}?ATOZ={{i.id}}{%endfor%}"> Product Name:A - Z </a>
+
                             <select name="orderby" id="short">
                                 <option selected="" value="1">Position</option>
                                 <option value="1">Price: Lowest</option>
                                 <option value="1">Price: Highest</option>
-                                <option value="1">Product Name:Z</option>
                                 <option value="1">Sort by price:low</option>
                                 <option value="1">Product Name: Z</option>
                                 <option value="1">In stock</option>
@@ -244,7 +244,7 @@
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="large" role="tabpanel">
                             <div class="row">
-                                {% for product in productList %}
+                                {% for product in productList%}
                                 <div class="col-lg-4 col-md-6">
                                     <div class="single_product">
                                         <div class="product_thumb">
@@ -253,7 +253,7 @@
                                                <img src="{% static 'img\cart\span-new.png' %}" alt="">
                                            </div>
                                            <div class="product_action">
-                                               <a href="#"> <i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                               <a href="{% url 'home:add_to_cart' product.id%}"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                            </div>
                                         </div>
                                         <div class="product_content">
@@ -707,10 +707,11 @@
                     <div class="page_number">
                         <span>Pages: </span>
                         <ul>
-                            <li>«</li>
-                            <li class="current_number">1</li>
-                            <li><a href="#">2</a></li>
-                            <li>»</li>
+                            <li><a href="{% url 'home:product'%}?page={{page.previous_page_number}}">«</a></li>
+                            <li><a href="/product/?page=1">1</a></li>
+                            <li><a href="/product/?page=2">2</a></li>
+                            <li><a href="/product/?page=3">3</a></li>
+                            <li><a href="{% url 'home:product'%}?page={{page.previous_page_number}}">»</a></li>
                         </ul>
                     </div>
                 </div>

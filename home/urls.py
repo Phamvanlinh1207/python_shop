@@ -10,7 +10,9 @@ urlpatterns = [
     path('category/<slug:slug>', views.categoryView, name = 'category' ),
     path('product-Detail/<slug:slug>/<int:id>', views.productDetail, name = 'productDetail' ),
     path('cart/', views.cart, name='cart' ),
+    path('add_to_cart/<int:id>', views.add_to_cart, name='add_to_cart' ),
+    path('remove_cart/<int:id>', views.remove_cart, name='remove_cart' ),
     path( 'login/',auth_views.LoginView.as_view(template_name="pages/login.html"), name="login"),
     path( 'logout/',auth_views.LogoutView.as_view(next_page="/"), name="logout"),
-    path('register/', views.register, name='register' )
+    path('register/', views.register, name='register' ),
 ]

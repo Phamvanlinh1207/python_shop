@@ -40,39 +40,20 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {% for order_detail in order_details %}
                             <tr>
-                               <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                <td class="product_thumb"><a href="#"><img src="assets\img\cart\cart17.jpg" alt=""></a></td>
-                                <td class="product_name"><a href="#">Handbag fringilla</a></td>
-                                <td class="product-price">£65.00</td>
+                               <td class="product_remove"><a href="{% url 'home:remove_cart' order_detail.id%}"><i class="fa fa-trash-o"></i></a></td>
+                                <td class="product_thumb"><a href="#"><img src="{{order_detail.product.image.url}}"style="width:100px;height:100px;" alt="image"></a></td>
+                                <td class="product_name"><a href="#">{{order_detail.product.name}}</a></td>
+                                <td class="product-price">${{order_detail.product.price}}</td>
                                 <td class="product_quantity"><input min="0" max="100" value="1" type="number"></td>
-                                <td class="product_total">£130.00</td>
-
-
+                                <td class="product_total">{{order_detail.get_product_price}}</td>
                             </tr>
-
-                            <tr>
-                               <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                <td class="product_thumb"><a href="#"><img src="assets\img\cart\cart18.jpg" alt=""></a></td>
-                                <td class="product_name"><a href="#">Handbags justo</a></td>
-                                <td class="product-price">£90.00</td>
-                                <td class="product_quantity"><input min="0" max="100" value="1" type="number"></td>
-                                <td class="product_total">£180.00</td>
-
-
-                            </tr>
-                            <tr>
-                               <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
-                                <td class="product_thumb"><a href="#"><img src="assets\img\cart\cart19.jpg" alt=""></a></td>
-                                <td class="product_name"><a href="#">Handbag elit</a></td>
-                                <td class="product-price">£80.00</td>
-                                <td class="product_quantity"><input min="0" max="100" value="1" type="number"></td>
-                                <td class="product_total">£160.00</td>
-
-
-                            </tr>
-
+                           
                         </tbody>
+                        {% empty %}
+                        <h5> <b style="color:red;">Bạn chưa có đơn hàng nào ?</b> </br><a href="/product/"> <Small> quay lại trang sản phẩm </small></a> </h5>
+                     {% endfor %}
                     </table>   
                         </div>  
                         <div class="cart_submit">
@@ -110,7 +91,7 @@
 
                                <div class="cart_subtotal">
                                    <p>Total</p>
-                                   <p class="cart_amount">£215.00</p>
+                                   <p class="cart_amount">${{cart.get_cart_total}}</p>
                                </div>
                                <div class="checkout_btn">
                                    <a href="#">Proceed to Checkout</a>

@@ -25,6 +25,15 @@ class RegisterForm(forms.Form):
         except ObjectDoesNotExist:
             return username
         raise forms.ValidationError("Tài khoản đã tồn tại")
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if re.search(r' ', email):
+            raise forms.ValidationError("Email có khoẳng trống")
+        try:
+            User.objects.get(email=email)
+        except ObjectDoesNotExist:
+            return email
+        raise forms.ValidationError("Email đã tồn tại")
     def save(self):
         User.objects.create_user(username=self.cleaned_data['username'], email=self.cleaned_data['email'], password=self.cleaned_data['password1'])
     
